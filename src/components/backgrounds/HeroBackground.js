@@ -20,4 +20,8 @@ const Wrapper = styled.div`
 const Background = styled.img`
   position: absolute;
   z-index: -1;
+  @media (max-width: 480px) {
+    width: 600px;
+    height: auto;
+  }
 `

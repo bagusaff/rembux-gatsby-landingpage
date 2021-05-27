@@ -26,7 +26,7 @@ Open [http://localhost:8000](http://localhost:8000) with your browser to see the
 
 [x] Contact Us
 
-[ ] Fully Responsive
+[x] Fully Responsive
 
 ### Time Line
 
@@ -71,3 +71,7 @@ Open [http://localhost:8000](http://localhost:8000) with your browser to see the
 ## 25 / 05 / 2021
 
 - finish all section
+
+## 27 / 05 / 2021
+
+- Support Responsive on mobile and Tablet

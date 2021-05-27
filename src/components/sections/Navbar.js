@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 import styled from "styled-components"
-import { IoIosArrowDown } from "react-icons/io"
+import { IoIosArrowDown, IoIosMenu } from "react-icons/io"
 
 const Navbar = () => {
   const [scrollNav, setScrollNav] = useState(false)
@@ -28,6 +28,9 @@ const Navbar = () => {
               alt="rembux"
             />
           </LogoWrapper>
+          <HamburgerMenu>
+            <IoIosMenu size="2rem" color={scrollNav ? "#00163A" : "white"} />
+          </HamburgerMenu>
           <NavMenu>
             <NavItem scrollNav={scrollNav}>About Us</NavItem>
             <NavItem scrollNav={scrollNav}>Service</NavItem>
@@ -51,8 +54,8 @@ const Navbar = () => {
 export default Navbar
 
 const Nav = styled.nav`
-  height: 60px;
-  margin-top: -60px;
+  height: auto;
+  margin-top: -70px;
   position: sticky;
   background: ${({ scrollNav }) => (scrollNav ? "white" : "transparent")};
   box-shadow: ${({ scrollNav }) =>
@@ -65,9 +68,11 @@ const Nav = styled.nav`
 const NavbarWrapper = styled.div`
   display: flex;
   align-items: center;
+  justify-content: space-between;
   max-width: 1234px;
   margin: auto;
   height: inherit;
+  padding: 10px 20px;
 `
 
 const LogoWrapper = styled.div``
@@ -81,6 +86,10 @@ const NavMenu = styled.div`
   grid-template-columns: repeat(5, 1fr);
   gap: 30px;
   margin-left: 100px;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 `
 
 const NavItem = styled.a`
@@ -94,6 +103,18 @@ const NavItem = styled.a`
 
 const ButtonWrapper = styled.div`
   margin-left: auto;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+`
+
+const HamburgerMenu = styled.div`
+  display: none;
+  cursor: pointer;
+  @media (max-width: 768px) {
+    display: block;
+  }
 `
 
 const Button = styled.button`

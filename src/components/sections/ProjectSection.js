@@ -37,6 +37,10 @@ const PreTitle = styled.img`
   z-index: -1;
   left: 40.5%;
   top: 12.5%;
+  @media (max-width: 480px) {
+    left: 25%;
+    top: 0.7%;
+  }
 `
 
 const ContentWrapper = styled.div`
@@ -47,18 +51,33 @@ const ContentWrapper = styled.div`
   display: grid;
   align-items: center;
   row-gap: 5rem;
+  @media (max-width: 480px) {
+    padding: 50px 20px;
+    row-gap: 2rem;
+  }
 `
 
 const Title = styled(H2)`
   text-align: center;
   color: ${themes.secondary};
+  @media (max-width: 480px) {
+    font-size: 1.25rem;
+  }
 `
 
 const ProjectWrapper = styled.div`
   display: grid;
   padding: 1rem;
   grid-gap: 1rem;
+  justify-content: center;
   grid-template-columns: repeat(4, 1fr);
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media (max-width: 480px) {
+    grid-template-columns: auto;
+  }
 `
 
 const ButtonWrapper = styled.div`
@@ -83,5 +102,10 @@ const ButtonMore = styled.a`
     background: #fc5c7e;
     color: white;
     transition: transform 0.3s, opacity 0.3s, background-color 0.3s;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 14px;
+    padding: 0.75rem 1.5rem;
   }
 `

@@ -51,8 +51,12 @@ const Wrapper = styled.div``
 const PreTitle = styled.img`
   position: absolute;
   z-index: -1;
-  left: 38.5%;
+  left: 25%;
   top: 3%;
+
+  @media (max-width: 480px) {
+    font-size: 14px;
+  }
 `
 
 const ContentWrapper = styled.div`
@@ -64,11 +68,17 @@ const ContentWrapper = styled.div`
   align-items: center;
   justify-content: center;
   row-gap: 4rem;
+  @media (max-width: 480px) {
+    row-gap: 2rem;
+  }
 `
 
 const Title = styled(H2)`
   text-align: center;
   color: ${themes.secondary};
+  @media (max-width: 480px) {
+    font-size: 1.25rem;
+  }
 `
 
 const IconWrapper = styled.div`
@@ -96,6 +106,10 @@ const Icon = styled.a`
   }
   > * {
     fill: #fc5c7e;
+  }
+
+  @media (max-width: 480px) {
+    padding: 1rem;
   }
 `
 

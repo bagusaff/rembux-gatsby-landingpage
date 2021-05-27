@@ -1,8 +1,11 @@
 import { Link } from "gatsby"
+import { StaticImage } from "gatsby-plugin-image"
 import React from "react"
 import styled from "styled-components"
+
 import { BodyText, H1 } from "../styles/TextStyles"
 import { themes } from "../styles/ColorStyles"
+
 import HeroBackground from "../backgrounds/HeroBackground"
 const HeroSection = () => {
   return (
@@ -21,16 +24,12 @@ const HeroSection = () => {
             Biaya? Tenang, kamu tentuin sendiri biaya nya.
           </Description>
 
-          <ButtonWrapper>
-            <Link to="/page-2">
-              <ButtonLink>
-                <TextLink>Yuk konsultasi dulu!</TextLink>
-              </ButtonLink>
-            </Link>
-          </ButtonWrapper>
+          <ButtonLink to="/page-2">
+            <TextLink>Yuk konsultasi dulu!</TextLink>
+          </ButtonLink>
         </TextWrapper>
         <ImageWrapper>
-          <Banner src="/images/banners/hero-banner.svg" />
+          <Banner alt="hero" src="images/banners/hero-banner.svg" />
         </ImageWrapper>
       </ContentWrapper>
     </Wrapper>
@@ -46,10 +45,15 @@ const Wrapper = styled.div`
 const ContentWrapper = styled.div`
   max-width: 1234px;
   margin: 0 auto;
-  padding: 150px 0px 50px;
+  padding: 150px 20px 50px;
   display: grid;
-  grid-template-columns: 2fr auto;
+  grid-template-columns: 3fr 2fr;
   column-gap: 30px;
+
+  @media (max-width: 480px) {
+    grid-template-columns: auto;
+    padding: 75px 20px 25px;
+  }
 `
 
 const TextWrapper = styled.div`
@@ -57,28 +61,42 @@ const TextWrapper = styled.div`
   display: grid;
   gap: 2rem;
   grid-auto-rows: min-content;
+  @media (max-width: 480px) {
+    gap: 1rem;
+  }
 `
 
 const ImageWrapper = styled.div`
   /* display: none; */
+  @media (max-width: 480px) {
+    display: none;
+  }
 `
 
-const Banner = styled.img``
+const Banner = styled.img`
+  max-width: 100%;
+  height: auto;
+`
 
 const Title = styled(H1)`
   color: ${themes.text1};
   line-height: 2.5rem;
+  @media (max-width: 480px) {
+    font-size: 22px;
+    line-height: 2rem;
+  }
 `
 
 const Description = styled(BodyText)`
   font-size: 1rem;
   line-height: 22px;
   color: ${themes.text1};
+  @media (max-width: 480px) {
+    font-size: 14px;
+  }
 `
 
-const ButtonWrapper = styled.div``
-
-const ButtonLink = styled.div`
+const ButtonLink = styled(Link)`
   border-radius: 20px;
   background: white;
   white-space: nowrap;
@@ -86,6 +104,7 @@ const ButtonLink = styled.div`
   display: inline-block;
   outline: none;
   border: none;
+  width: min-content;
   cursor: pointer;
   transition: all 0.5s ease-in-out;
   &:hover {
@@ -93,9 +112,13 @@ const ButtonLink = styled.div`
   }
 `
 
-const TextLink = styled.a`
+const TextLink = styled.p`
   text-align: center;
   color: #fc5c7e;
   text-decoration: none;
   font-weight: 700;
+
+  @media (max-width: 480px) {
+    font-size: 14px;
+  }
 `

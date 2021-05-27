@@ -19,7 +19,7 @@ const ContactForm = () => {
 export default ContactForm
 
 const FormWrapper = styled.div`
-  width: 400px;
+  max-width: 400px;
   background: #ffffff;
   position: relative;
   padding: 3rem 2rem;
@@ -33,6 +33,9 @@ const FormLabel = styled.label`
   font-size: 1rem;
   line-height: 16px;
   color: #00163a;
+  @media (max-width: 480px) {
+    font-size: 14px;
+  }
 `
 
 const TextInput = styled.input.attrs({

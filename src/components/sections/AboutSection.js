@@ -35,6 +35,10 @@ const PreTitle = styled.img`
   z-index: -1;
   left: 39%;
   top: 30%;
+  @media (max-width: 480px) {
+    left: 27%;
+    top: 14%;
+  }
 `
 
 const ContentWrapper = styled.div`
@@ -44,11 +48,20 @@ const ContentWrapper = styled.div`
   padding: 150px 20px 50px;
   display: grid;
   row-gap: 2rem;
+
+  @media (max-width: 480px) {
+    padding: 100px 20px 50px;
+    row-gap: 1.25rem;
+  }
 `
 
 const Title = styled(H2)`
   text-align: center;
   color: ${themes.secondary};
+
+  @media (max-width: 480px) {
+    font-size: 1.25rem;
+  }
 `
 
 const Description = styled(BodyText)`
@@ -56,4 +69,8 @@ const Description = styled(BodyText)`
   text-align: center;
   line-height: 1.5rem;
   color: ${themes.text2};
+  @media (max-width: 480px) {
+    font-size: 14px;
+    line-height: 1.5rem;
+  }
 `

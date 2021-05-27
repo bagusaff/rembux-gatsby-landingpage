@@ -33,11 +33,14 @@ const ReviewText = styled.h3`
   text-align: center;
   color: #9f9f9f;
 
+  @media (max-width: 480px) {
+    font-size: 14px;
+  }
   margin: 1.5rem 0;
 `
 
 const Avatar = styled.img`
-  width: 50px;
+  width: 50px !important;
   height: 50px;
   border-radius: 50%;
   margin: auto;

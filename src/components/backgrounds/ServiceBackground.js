@@ -33,4 +33,19 @@ const Background = styled.img`
     right: 0%;
     top: 950px;
   }
+
+  @media (max-width: 480px) {
+    :nth-child(1) {
+      right: 0%;
+      top: 150px;
+    }
+    :nth-child(2) {
+      left: 0%;
+      top: 450px;
+    }
+    :nth-child(3) {
+      right: 0%;
+      top: 750px;
+    }
+  }
 `

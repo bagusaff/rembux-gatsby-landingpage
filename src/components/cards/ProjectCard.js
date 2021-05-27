@@ -17,8 +17,8 @@ const ProjectCard = () => {
 export default ProjectCard
 
 const Wrapper = styled.div`
-  width: 250px;
-  height: 250px;
+  max-width: 332px;
+  max-height: 331px;
   display: flex;
   flex-direction: column;
   box-shadow: 1px 5px 21px -8px rgba(0, 0, 0, 0.25);
@@ -46,6 +46,14 @@ const Link = styled.h3`
   font-weight: 400;
   color: #061d40;
   padding: 0;
+  @media (max-width: 480px) {
+    font-size: 14px;
+  }
 `
 
-const Image = styled.img``
+const Image = styled.img`
+  @media (min-width: 768px) {
+    width: 100%;
+    height: auto;
+  }
+`

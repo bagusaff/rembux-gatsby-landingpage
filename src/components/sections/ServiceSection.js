@@ -96,6 +96,10 @@ const PreTitle = styled.img`
   z-index: -1;
   left: 39%;
   top: 10%;
+  @media (max-width: 480px) {
+    left: 25%;
+    top: 2%;
+  }
 `
 
 const ContentWrapper = styled.div`
@@ -105,11 +109,19 @@ const ContentWrapper = styled.div`
   padding: 150px 20px 50px;
   display: grid;
   row-gap: 5rem;
+
+  @media (max-width: 480px) {
+    padding: 50px 20px 50px;
+    row-gap: 2rem;
+  }
 `
 
 const Title = styled(H2)`
   text-align: center;
   color: ${themes.secondary};
+  @media (max-width: 480px) {
+    font-size: 1.25rem;
+  }
 `
 
 const InnerWrapper = styled.div`
@@ -119,9 +131,15 @@ const InnerWrapper = styled.div`
 
 const ImageWrapper = styled.div`
   flex: 5;
+  @media (max-width: 480px) {
+    display: none;
+  }
 `
 
-const Image = styled.img``
+const Image = styled.img`
+  max-width: 100%;
+  height: auto;
+`
 
 const DescriptionWrapper = styled.div`
   flex: 7;
@@ -147,6 +165,10 @@ const ServiceTitle = styled(H3)`
   :hover {
     margin-left: 15px;
   }
+
+  @media (max-width: 768px) {
+    width: max-content;
+  }
 `
 
 const ServiceBody = styled(BodyText)`
@@ -154,4 +176,12 @@ const ServiceBody = styled(BodyText)`
   font-size: 1rem;
   line-height: 22px;
   width: 600px;
+
+  @media (max-width: 768px) {
+    width: auto;
+  }
+  @media (max-width: 480px) {
+    width: auto;
+    font-size: 14px;
+  }
 `
