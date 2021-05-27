@@ -51,11 +51,12 @@ const Wrapper = styled.div``
 const PreTitle = styled.img`
   position: absolute;
   z-index: -1;
-  left: 25%;
+  left: 38.5%;
   top: 3%;
 
   @media (max-width: 480px) {
-    font-size: 14px;
+    left: 25%;
+    top: 3%;
   }
 `
 
