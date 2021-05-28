@@ -93,7 +93,7 @@ video {
   font: inherit;
   vertical-align: baseline;
   box-sizing: border-box;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 /* HTML5 display-role reset for older browsers */
 article,
