@@ -1,8 +1,9 @@
 import React from "react"
 import styled from "styled-components"
-import { Carousel } from "react-responsive-carousel"
 
+import { Carousel } from "react-responsive-carousel"
 import "react-responsive-carousel/lib/styles/carousel.min.css"
+
 import { H2 } from "../styles/TextStyles"
 import { themes } from "../styles/ColorStyles"
 import ReviewBackground from "../backgrounds/ReviewBackground"

@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React from "react"
 import Layout from "../components/layout/layout"
 import SEO from "../components/layout/seo"
 import AboutSection from "../components/sections/AboutSection"
@@ -11,12 +11,8 @@ import ReviewSection from "../components/sections/ReviewSection"
 import ServiceSection from "../components/sections/ServiceSection"
 
 function IndexPage() {
-  const [isOpen, setIsOpen] = useState(false)
-  const toggle = () => {
-    setIsOpen(!isOpen)
-  }
   return (
-    <Layout toggle={toggle} isOpen={isOpen}>
+    <Layout>
       <SEO title="Home" />
       <HeroSection />
       <AboutSection />

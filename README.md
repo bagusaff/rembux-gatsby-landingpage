@@ -83,3 +83,7 @@ Open [http://localhost:8000](http://localhost:8000) with your browser to see the
 - fix background bug on mobile
 
 - add auto scroll on navbar on click
+
+- add project list page /projects
+
+- !! still have background bug on mobile

@@ -38,7 +38,6 @@ const HeroSection = () => {
 export default HeroSection
 
 const Wrapper = styled.div`
-  overflow-x: clip;
   position: relative;
 `
 

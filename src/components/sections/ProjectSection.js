@@ -4,6 +4,7 @@ import styled from "styled-components"
 import { H2 } from "../styles/TextStyles"
 import { themes } from "../styles/ColorStyles"
 import ProjectCard from "../cards/ProjectCard"
+import { Link } from "gatsby"
 const ProjectSection = () => {
   return (
     <Wrapper id="project">
@@ -21,7 +22,7 @@ const ProjectSection = () => {
           <ProjectCard />
         </ProjectWrapper>
         <ButtonWrapper>
-          <ButtonMore>Lihat Selengkapnya!</ButtonMore>
+          <ButtonMore to="/projects">Lihat Selengkapnya!</ButtonMore>
         </ButtonWrapper>
       </ContentWrapper>
     </Wrapper>
@@ -85,7 +86,7 @@ const ButtonWrapper = styled.div`
   margin: auto;
 `
 
-const ButtonMore = styled.a`
+const ButtonMore = styled(Link)`
   align-self: center;
   letter-spacing: 2px;
   display: inline-block;
