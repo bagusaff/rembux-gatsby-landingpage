@@ -4,9 +4,7 @@ import styled from "styled-components"
 const HeroBackground = () => {
   return (
     <Wrapper>
-      <BackgroundContainer>
-        <Background src="/images/backgrounds/hero-background.svg" />
-      </BackgroundContainer>
+      <Background src="/images/backgrounds/hero-background.svg" />
     </Wrapper>
   )
 }
@@ -18,9 +16,6 @@ const Wrapper = styled.div`
   max-width: 1440px;
   margin: auto;
   overflow-x: clip !important;
-  @media (max-width: 480px) {
-    max-width: 100%;
-  }
 `
 
 const Background = styled.img`
@@ -30,10 +25,4 @@ const Background = styled.img`
     max-width: 600px;
     height: auto;
   }
-`
-
-const BackgroundContainer = styled.div`
-  position: absolute;
-  width: 100%;
-  z-index: -1;
 `
