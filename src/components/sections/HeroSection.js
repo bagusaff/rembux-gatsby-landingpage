@@ -38,7 +38,7 @@ const HeroSection = () => {
 export default HeroSection
 
 const Wrapper = styled.div`
-  overflow: clip;
+  overflow-x: clip;
 `
 
 const ContentWrapper = styled.div`
