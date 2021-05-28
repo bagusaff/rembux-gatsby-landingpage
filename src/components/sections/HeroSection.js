@@ -39,6 +39,9 @@ export default HeroSection
 
 const Wrapper = styled.div`
   overflow-x: clip;
+  @media (max-width: 480px) {
+    max-width: 480px;
+  }
 `
 
 const ContentWrapper = styled.div`
