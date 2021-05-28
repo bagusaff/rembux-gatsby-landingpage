@@ -23,6 +23,11 @@ const Wrapper = styled.div`
 const Background = styled.img`
   position: absolute;
   z-index: -1;
+  @media (max-width: 480px) {
+    max-width: 600px;
+    height: auto;
+    background-size: cover;
+  }
 `
 
 const BackgroundContainer = styled.div`
