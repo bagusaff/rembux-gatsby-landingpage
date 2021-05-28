@@ -6,7 +6,7 @@ import { themes } from "../styles/ColorStyles"
 import ProjectCard from "../cards/ProjectCard"
 const ProjectSection = () => {
   return (
-    <Wrapper>
+    <Wrapper id="project">
       <ContentWrapper>
         <PreTitle src="/images/backgrounds/pre-title.svg" />
         <Title>Karya Kami</Title>

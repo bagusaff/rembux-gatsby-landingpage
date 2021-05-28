@@ -10,7 +10,7 @@ import ReviewCard from "../cards/ReviewCard"
 
 const ReviewSection = () => {
   return (
-    <Wrapper>
+    <Wrapper id="review">
       <ReviewBackground />
       <ContentWrapper>
         <PreTitle src="/images/backgrounds/pre-title.svg" />

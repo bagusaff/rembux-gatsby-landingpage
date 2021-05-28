@@ -15,7 +15,7 @@ import {
 
 const ContactSection = () => {
   return (
-    <Wrapper>
+    <Wrapper id="contact">
       <ContactBackground />
       <ContentWrapper>
         <PreTitle src="/images/backgrounds/pre-title.svg" />

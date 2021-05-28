@@ -4,7 +4,7 @@ import { BodyText, H2 } from "../styles/TextStyles"
 import { themes } from "../styles/ColorStyles"
 const AboutSection = () => {
   return (
-    <Wrapper>
+    <Wrapper id="about">
       <ContentWrapper>
         <PreTitle src="/images/backgrounds/pre-title.svg" />
         <Title>Tentang Kami</Title>

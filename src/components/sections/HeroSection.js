@@ -1,5 +1,4 @@
 import { Link } from "gatsby"
-import { StaticImage } from "gatsby-plugin-image"
 import React from "react"
 import styled from "styled-components"
 
@@ -9,7 +8,7 @@ import { themes } from "../styles/ColorStyles"
 import HeroBackground from "../backgrounds/HeroBackground"
 const HeroSection = () => {
   return (
-    <Wrapper>
+    <Wrapper id="home">
       <HeroBackground />
       <ContentWrapper>
         <TextWrapper>
@@ -50,7 +49,7 @@ const ContentWrapper = styled.div`
   grid-template-columns: 3fr 2fr;
   column-gap: 30px;
 
-  @media (max-width: 480px) {
+  @media (max-width: 600px) {
     grid-template-columns: auto;
     padding: 75px 20px 25px;
   }
@@ -68,7 +67,7 @@ const TextWrapper = styled.div`
 
 const ImageWrapper = styled.div`
   /* display: none; */
-  @media (max-width: 480px) {
+  @media (max-width: 600px) {
     display: none;
   }
 `

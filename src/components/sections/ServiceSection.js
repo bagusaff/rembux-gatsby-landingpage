@@ -7,7 +7,7 @@ import ServiceBackground from "../backgrounds/ServiceBackground"
 const ServiceSection = () => {
   return (
     <>
-      <Wrapper>
+      <Wrapper id="services">
         <ServiceBackground />
         <ContentWrapper>
           <PreTitle src="/images/backgrounds/pre-title.svg" />

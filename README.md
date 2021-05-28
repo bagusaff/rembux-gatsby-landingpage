@@ -75,3 +75,11 @@ Open [http://localhost:8000](http://localhost:8000) with your browser to see the
 ## 27 / 05 / 2021
 
 - Support Responsive on mobile and Tablet
+
+## 28 / 05 / 2021
+
+- add sidebar menu on mobile
+
+- fix background bug on mobile
+
+- add auto scroll on navbar on click

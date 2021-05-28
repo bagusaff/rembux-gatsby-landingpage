@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react"
 import styled from "styled-components"
 import { IoIosArrowDown, IoIosMenu } from "react-icons/io"
+import { animateScroll as scroll, Link as LinkScroll } from "react-scroll"
 
-const Navbar = () => {
+const Navbar = ({ toggle }) => {
   const [scrollNav, setScrollNav] = useState(false)
   const scrolled = () => {
     if (window.scrollY >= 250) {
@@ -11,15 +12,21 @@ const Navbar = () => {
       setScrollNav(false)
     }
   }
+  const toggleHome = () => {
+    scroll.scrollToTop()
+  }
+
   useEffect(() => {
     window.addEventListener("scroll", scrolled)
   }, [])
+
   return (
     <>
       <Nav scrollNav={scrollNav}>
         <NavbarWrapper>
           <LogoWrapper>
             <Logo
+              onClick={toggleHome}
               src={
                 scrollNav
                   ? "/images/logos/rembux-dark.svg"
@@ -28,15 +35,65 @@ const Navbar = () => {
               alt="rembux"
             />
           </LogoWrapper>
-          <HamburgerMenu>
+          <HamburgerMenu onClick={toggle}>
             <IoIosMenu size="2rem" color={scrollNav ? "#00163A" : "white"} />
           </HamburgerMenu>
           <NavMenu>
-            <NavItem scrollNav={scrollNav}>About Us</NavItem>
-            <NavItem scrollNav={scrollNav}>Service</NavItem>
-            <NavItem scrollNav={scrollNav}>Project</NavItem>
-            <NavItem scrollNav={scrollNav}>Testimonial</NavItem>
-            <NavItem scrollNav={scrollNav}>Contact</NavItem>
+            <NavItem
+              scrollNav={scrollNav}
+              to="about"
+              smooth={true}
+              duration={500}
+              spy={true}
+              exact="true"
+              offset={-50}
+            >
+              About Us
+            </NavItem>
+            <NavItem
+              scrollNav={scrollNav}
+              to="services"
+              smooth={true}
+              duration={500}
+              spy={true}
+              exact="true"
+              offset={-50}
+            >
+              Service
+            </NavItem>
+            <NavItem
+              scrollNav={scrollNav}
+              to="project"
+              smooth={true}
+              duration={500}
+              spy={true}
+              exact="true"
+              offset={-50}
+            >
+              Project
+            </NavItem>
+            <NavItem
+              scrollNav={scrollNav}
+              to="review"
+              smooth={true}
+              duration={500}
+              spy={true}
+              exact="true"
+              offset={-50}
+            >
+              Testimonial
+            </NavItem>
+            <NavItem
+              scrollNav={scrollNav}
+              to="contact"
+              smooth={true}
+              duration={500}
+              spy={true}
+              exact="true"
+              offset={-50}
+            >
+              Contact
+            </NavItem>
           </NavMenu>
           <ButtonWrapper>
             <Button>
@@ -92,13 +149,30 @@ const NavMenu = styled.div`
   }
 `
 
-const NavItem = styled.a`
+const NavItem = styled(LinkScroll)`
   text-align: center;
   color: ${({ scrollNav }) => (scrollNav ? "#FC5C7E" : "white")};
   text-decoration: none;
   cursor: pointer;
   font-weight: 500;
   height: 100%;
+  position: relative;
+  &::after {
+    background: none repeat scroll 0 0 transparent;
+    bottom: -10px;
+    content: "";
+    display: block;
+    height: 2px;
+    left: 50%;
+    position: absolute;
+    background: ${({ scrollNav }) => (scrollNav ? "#FC5C7E" : "white")};
+    transition: width 0.3s ease 0s, left 0.3s ease 0s;
+    width: 0;
+  }
+  &:hover::after {
+    width: 100%;
+    left: 0;
+  }
 `
 
 const ButtonWrapper = styled.div`

@@ -15,6 +15,7 @@ const Wrapper = styled.div`
   position: relative;
   max-width: 1440px;
   margin: auto;
+  overflow-x: clip;
 `
 
 const Background = styled.img`
