@@ -4,7 +4,9 @@ import styled from "styled-components"
 const HeroBackground = () => {
   return (
     <Wrapper>
-      <Background src="/images/backgrounds/hero-background.svg" />
+      <BackgroundContainer>
+        <Background src="/images/backgrounds/hero-background.svg" />
+      </BackgroundContainer>
     </Wrapper>
   )
 }
@@ -25,4 +27,10 @@ const Background = styled.img`
     width: 600px;
     height: auto;
   }
+`
+
+const BackgroundContainer = styled.div`
+  position: absolute;
+  width: 100%;
+  z-index: -1;
 `
