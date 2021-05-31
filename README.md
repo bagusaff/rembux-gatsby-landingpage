@@ -87,3 +87,9 @@ Open [http://localhost:8000](http://localhost:8000) with your browser to see the
 - add project list page /projects
 
 - !! still have background bug on mobile
+
+## 31 / 05 / 2021
+
+- add all project list section
+
+- fix navbar links

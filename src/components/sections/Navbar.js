@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react"
+
 import styled from "styled-components"
 import { IoIosArrowDown, IoIosMenu } from "react-icons/io"
-import { animateScroll as scroll, Link as LinkScroll } from "react-scroll"
+import { Link as LinkScroll } from "react-scroll"
+import { Link } from "gatsby"
 
-const Navbar = ({ toggle }) => {
+const Navbar = ({ toggle, home }) => {
   const [scrollNav, setScrollNav] = useState(false)
   const scrolled = () => {
     if (window.scrollY >= 250) {
@@ -11,9 +13,6 @@ const Navbar = ({ toggle }) => {
     } else {
       setScrollNav(false)
     }
-  }
-  const toggleHome = () => {
-    scroll.scrollToTop()
   }
 
   useEffect(() => {
@@ -24,9 +23,8 @@ const Navbar = ({ toggle }) => {
     <>
       <Nav scrollNav={scrollNav}>
         <NavbarWrapper>
-          <LogoWrapper>
+          <LogoWrapper to="/">
             <Logo
-              onClick={toggleHome}
               src={
                 scrollNav
                   ? "/images/logos/rembux-dark.svg"
@@ -38,68 +36,73 @@ const Navbar = ({ toggle }) => {
           <HamburgerMenu onClick={toggle}>
             <IoIosMenu size="2rem" color={scrollNav ? "#00163A" : "white"} />
           </HamburgerMenu>
-          <NavMenu>
-            <NavItem
-              scrollNav={scrollNav}
-              to="about"
-              smooth={true}
-              duration={500}
-              spy={true}
-              exact="true"
-              offset={-50}
-            >
-              About Us
-            </NavItem>
-            <NavItem
-              scrollNav={scrollNav}
-              to="services"
-              smooth={true}
-              duration={500}
-              spy={true}
-              exact="true"
-              offset={-50}
-            >
-              Service
-            </NavItem>
-            <NavItem
-              scrollNav={scrollNav}
-              to="project"
-              smooth={true}
-              duration={500}
-              spy={true}
-              exact="true"
-              offset={-50}
-            >
-              Project
-            </NavItem>
-            <NavItem
-              scrollNav={scrollNav}
-              to="review"
-              smooth={true}
-              duration={500}
-              spy={true}
-              exact="true"
-              offset={-50}
-            >
-              Testimonial
-            </NavItem>
-            <NavItem
-              scrollNav={scrollNav}
-              to="contact"
-              smooth={true}
-              duration={500}
-              spy={true}
-              exact="true"
-              offset={-50}
-            >
-              Contact
-            </NavItem>
-          </NavMenu>
+          {home ? (
+            <NavMenu>
+              <NavItem
+                scrollNav={scrollNav}
+                to="about"
+                smooth={true}
+                duration={500}
+                spy={true}
+                exact="true"
+                offset={-50}
+              >
+                About Us
+              </NavItem>
+              <NavItem
+                scrollNav={scrollNav}
+                to="services"
+                smooth={true}
+                duration={500}
+                spy={true}
+                exact="true"
+                offset={-50}
+              >
+                Service
+              </NavItem>
+              <NavItem
+                scrollNav={scrollNav}
+                to="project"
+                smooth={true}
+                duration={500}
+                spy={true}
+                exact="true"
+                offset={-50}
+              >
+                Project
+              </NavItem>
+              <NavItem
+                scrollNav={scrollNav}
+                to="review"
+                smooth={true}
+                duration={500}
+                spy={true}
+                exact="true"
+                offset={-50}
+              >
+                Testimonial
+              </NavItem>
+              <NavItem
+                scrollNav={scrollNav}
+                to="contact"
+                smooth={true}
+                duration={500}
+                spy={true}
+                exact="true"
+                offset={-50}
+              >
+                Contact
+              </NavItem>
+            </NavMenu>
+          ) : (
+            <></>
+          )}
+
           <ButtonWrapper>
-            <Button>
+            <Button scrollNav={scrollNav}>
               <Flag src="/images/icons/flag-ind.svg" />
               <p>ID</p>
-              <IoIosArrowDown />
+              <IoIosArrowDown color={scrollNav ? " #00163A" : "black"} />
             </Button>
           </ButtonWrapper>
         </NavbarWrapper>
@@ -132,7 +135,7 @@ const NavbarWrapper = styled.div`
   padding: 10px 20px;
 `
 
-const LogoWrapper = styled.div``
+const LogoWrapper = styled(Link)``
 
 const Logo = styled.img`
   cursor: pointer;
@@ -197,16 +200,16 @@ const Button = styled.button`
   align-items: center;
   gap: 5px;
   justify-content: space-between;
-  background: #ffffff;
+  background: ${({ scrollNav }) => (scrollNav ? "#ffffff" : "transparent")};
   border: 2px solid rgba(0, 0, 0, 0.25);
   cursor: pointer;
   transition: box-shadow 0.4s ease;
   border-radius: 10px;
   padding: 6px 10px;
-
+  transition: 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
   > p {
     font-weight: 700;
-    color: #313131;
+    color: ${({ scrollNav }) => (scrollNav ? "#313131" : "black")};
     font-family: "Nunito", sans-serif;
   }
 `

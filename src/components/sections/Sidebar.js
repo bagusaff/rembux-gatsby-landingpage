@@ -2,8 +2,9 @@ import React from "react"
 import styled from "styled-components"
 import { FaTimes } from "react-icons/fa"
 import { Link as LinkScroll } from "react-scroll"
+import { Link } from "gatsby"
 
-const Sidebar = ({ isOpen, toggle }) => {
+const Sidebar = ({ isOpen, toggle, home }) => {
   return (
     <SidebarContainer isOpen={isOpen} onClick={toggle}>
       <Icon>
@@ -11,70 +12,68 @@ const Sidebar = ({ isOpen, toggle }) => {
       </Icon>
       <SidebarWrapper>
         <SidebarMenu>
-          <SidebarLink
-            to="home"
-            smooth={true}
-            duration={500}
-            spy={true}
-            exact="true"
-            offset={-50}
-            onClick={toggle}
-          >
+          <LogoWrapper to="/">
             <LinkText>
               <Logo src="/images/logos/rembux.svg" />
             </LinkText>
-          </SidebarLink>
-          <SidebarLink
-            to="about"
-            smooth={true}
-            duration={500}
-            spy={true}
-            exact="true"
-            offset={-50}
-            onClick={toggle}
-          >
-            <LinkText>About Us</LinkText>
-          </SidebarLink>
-          <SidebarLink
-            to="services"
-            smooth={true}
-            duration={500}
-            spy={true}
-            exact="true"
-            onClick={toggle}
-          >
-            <LinkText>Services</LinkText>
-          </SidebarLink>
-          <SidebarLink
-            to="project"
-            smooth={true}
-            duration={500}
-            spy={true}
-            exact="true"
-            onClick={toggle}
-          >
-            <LinkText>Project</LinkText>
-          </SidebarLink>
-          <SidebarLink
-            to="review"
-            smooth={true}
-            duration={500}
-            spy={true}
-            exact="true"
-            onClick={toggle}
-          >
-            <LinkText>Testimonial</LinkText>
-          </SidebarLink>
-          <SidebarLink
-            to="contact"
-            smooth={true}
-            duration={500}
-            spy={true}
-            exact="true"
-            onClick={toggle}
-          >
-            <LinkText>Contact</LinkText>
-          </SidebarLink>
+          </LogoWrapper>
+          {home ? (
+            <>
+              <SidebarLink
+                to="about"
+                smooth={true}
+                duration={500}
+                spy={true}
+                exact="true"
+                offset={-50}
+                onClick={toggle}
+              >
+                <LinkText>About Us</LinkText>
+              </SidebarLink>
+              <SidebarLink
+                to="services"
+                smooth={true}
+                duration={500}
+                spy={true}
+                exact="true"
+                onClick={toggle}
+              >
+                <LinkText>Services</LinkText>
+              </SidebarLink>
+              <SidebarLink
+                to="project"
+                smooth={true}
+                duration={500}
+                spy={true}
+                exact="true"
+                onClick={toggle}
+              >
+                <LinkText>Project</LinkText>
+              </SidebarLink>
+              <SidebarLink
+                to="review"
+                smooth={true}
+                duration={500}
+                spy={true}
+                exact="true"
+                onClick={toggle}
+              >
+                <LinkText>Testimonial</LinkText>
+              </SidebarLink>
+              <SidebarLink
+                to="contact"
+                smooth={true}
+                duration={500}
+                spy={true}
+                exact="true"
+                onClick={toggle}
+              >
+                <LinkText>Contact</LinkText>
+              </SidebarLink>
+            </>
+          ) : (
+            <></>
+          )}
         </SidebarMenu>
         {/* <SideBtnWrap>
             <SidebarBtn href="/login">Masuk</SidebarBtn>
@@ -137,6 +136,8 @@ const SidebarLink = styled(LinkScroll)`
 `
 
 const Logo = styled.img``
+
+const LogoWrapper = styled(Link)``
 
 const LinkText = styled.p`
   font-size: 1.5rem;

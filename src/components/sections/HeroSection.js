@@ -1,11 +1,11 @@
-import { Link } from "gatsby"
 import React from "react"
 import styled from "styled-components"
+import { Link as LinkScroll } from "react-scroll"
 
 import { BodyText, H1 } from "../styles/TextStyles"
 import { themes } from "../styles/ColorStyles"
-
 import HeroBackground from "../backgrounds/HeroBackground"
+
 const HeroSection = () => {
   return (
     <Wrapper id="home">
@@ -23,7 +23,14 @@ const HeroSection = () => {
             Biaya? Tenang, kamu tentuin sendiri biaya nya.
           </Description>
 
-          <ButtonLink to="/page-2">
+          <ButtonLink
+            to="contact"
+            smooth={true}
+            duration={500}
+            spy={true}
+            exact="true"
+            offset={-50}
+          >
             <TextLink>Yuk konsultasi dulu!</TextLink>
           </ButtonLink>
         </TextWrapper>
@@ -66,7 +73,6 @@ const TextWrapper = styled.div`
 `
 
 const ImageWrapper = styled.div`
-  /* display: none; */
   @media (max-width: 600px) {
     display: none;
   }
@@ -95,7 +101,7 @@ const Description = styled(BodyText)`
   }
 `
 
-const ButtonLink = styled(Link)`
+const ButtonLink = styled(LinkScroll)`
   border-radius: 20px;
   background: white;
   white-space: nowrap;
