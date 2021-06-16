@@ -57,4 +57,10 @@ const Image = styled.img`
     height: 100%;
     object-fit: contain;
   }
+
+  @media (max-width: 768px) {
+    height: 250px;
+    max-height: 250px;
+    width: 100%;
+  }
 `
