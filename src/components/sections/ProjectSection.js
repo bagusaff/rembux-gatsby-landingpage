@@ -1,25 +1,38 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import styled from "styled-components"
 
 import { H2 } from "../styles/TextStyles"
 import { themes } from "../styles/ColorStyles"
 import ProjectCard from "../cards/ProjectCard"
 import { Link } from "gatsby"
+import { publicAxios } from "../../services/axios.service"
 const ProjectSection = () => {
+  const [project, setProject] = useState([])
+
+  useEffect(() => {
+    let isMounted = false
+    const FetchEightProject = () => {
+      publicAxios
+        .get("/api/project/display")
+        .then(res => {
+          setProject(res.data)
+        })
+        .catch(err => console.log(err))
+    }
+    FetchEightProject()
+    return () => {
+      isMounted = true
+    }
+  }, [])
   return (
     <Wrapper id="project">
       <ContentWrapper>
         <PreTitle src="/images/backgrounds/pre-title.svg" />
         <Title>Karya Kami</Title>
         <ProjectWrapper>
-          <ProjectCard />
-          <ProjectCard />
-          <ProjectCard />
-          <ProjectCard />
-          <ProjectCard />
-          <ProjectCard />
-          <ProjectCard />
-          <ProjectCard />
+          {project.map(item => (
+            <ProjectCard key={item._id} item={item} />
+          ))}
         </ProjectWrapper>
         <ButtonWrapper>
           <ButtonMore to="/projects">Lihat Selengkapnya!</ButtonMore>

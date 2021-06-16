@@ -93,3 +93,7 @@ Open [http://localhost:8000](http://localhost:8000) with your browser to see the
 - add all project list section
 
 - fix navbar links
+
+## 16 / 06 / 2021
+
+- connected to API , all data comes from the server

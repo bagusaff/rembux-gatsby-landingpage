@@ -1,11 +1,30 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import styled from "styled-components"
 
 import { H2 } from "../styles/TextStyles"
 import { themes } from "../styles/ColorStyles"
 import ProjectCard from "../cards/ProjectCard"
+import { publicAxios } from "../../services/axios.service"
 
 const AllProjectSection = () => {
+  const [project, setProject] = useState([])
+
+  useEffect(() => {
+    let isMounted = false
+    const FetchAllProject = () => {
+      publicAxios
+        .get("/api/project/")
+        .then(res => {
+          setProject(res.data)
+        })
+        .catch(err => console.log(err))
+    }
+    FetchAllProject()
+    return () => {
+      isMounted = true
+    }
+  }, [])
+
   return (
     <Wrapper>
       <ContentWrapper>
@@ -18,14 +37,9 @@ const AllProjectSection = () => {
           <FilterButton>Landing Page</FilterButton>
         </FilterWrapper>
         <ProjectWrapper>
-          <ProjectCard />
-          <ProjectCard />
-          <ProjectCard />
-          <ProjectCard />
-          <ProjectCard />
-          <ProjectCard />
-          <ProjectCard />
-          <ProjectCard />
+          {project.map(item => (
+            <ProjectCard key={item._id} item={item} />
+          ))}
         </ProjectWrapper>
       </ContentWrapper>
     </Wrapper>

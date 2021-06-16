@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import styled from "styled-components"
 
 import { Carousel } from "react-responsive-carousel"
@@ -9,7 +9,26 @@ import { themes } from "../styles/ColorStyles"
 import ReviewBackground from "../backgrounds/ReviewBackground"
 import ReviewCard from "../cards/ReviewCard"
 
+import { publicAxios } from "../../services/axios.service"
+
 const ReviewSection = () => {
+  const [review, setReview] = useState([])
+
+  useEffect(() => {
+    let isMounted = false
+    const FetchReview = () => {
+      publicAxios
+        .get("/api/review/")
+        .then(res => {
+          setReview(res.data)
+        })
+        .catch(err => console.log(err))
+    }
+    FetchReview()
+    return () => {
+      isMounted = true
+    }
+  }, [])
   return (
     <Wrapper id="review">
       <ReviewBackground />
@@ -24,9 +43,9 @@ const ReviewSection = () => {
             showStatus={false}
             showArrows={false}
           >
-            <ReviewCard />
-            <ReviewCard />
-            <ReviewCard />
+            {review.map(item => (
+              <ReviewCard props={item} key={item._id} />
+            ))}
           </SwiperContainer>
         </ReviewWrapper>
       </ContentWrapper>

@@ -2,12 +2,12 @@ import React from "react"
 import styled from "styled-components"
 import { FiExternalLink } from "react-icons/fi"
 
-const ProjectCard = () => {
+const ProjectCard = ({ item }) => {
   return (
     <Wrapper>
-      <Image src="/images/banners/project.png" />
+      <Image src={item.thumbnail} />
       <LinkWrapper>
-        <Link>Landing Page</Link>
+        <Link>{item.title}</Link>
         <FiExternalLink size="1.5rem" color="#FC5C7E" />
       </LinkWrapper>
     </Wrapper>
@@ -53,7 +53,8 @@ const Link = styled.h3`
 
 const Image = styled.img`
   @media (min-width: 768px) {
-    width: 100%;
-    height: auto;
+    width: 280px;
+    height: 100%;
+    object-fit: contain;
   }
 `

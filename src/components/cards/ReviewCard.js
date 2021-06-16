@@ -1,18 +1,13 @@
 import React from "react"
 import styled from "styled-components"
 
-const ReviewCard = () => {
+const ReviewCard = ({ props }) => {
   return (
     <Wrapper>
-      <ReviewText>
-        Lorem Ipsum is simply dummy text of the printing and typesetting
-        industry. Lorem Ipsum has been the industry's standard dummy text ever
-        since the 1500s, when an unknown printer took a galley of type and
-        scrambled it to make a type specimen book.
-      </ReviewText>
-      <Avatar src="/images/avatars/bambang.png" />
-      <Name>Bambang Sujatmiko</Name>
-      <Status>(Universitas Gajah Madha)</Status>
+      <ReviewText>{props.description}</ReviewText>
+      <Avatar src={props.photo} />
+      <Name>{props.clientName}</Name>
+      <Status>({props.projectName})</Status>
     </Wrapper>
   )
 }
