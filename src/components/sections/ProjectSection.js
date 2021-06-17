@@ -1,13 +1,26 @@
 import React, { useState, useEffect } from "react"
 import styled from "styled-components"
+import { Link } from "gatsby"
 
 import { H2 } from "../styles/TextStyles"
 import { themes } from "../styles/ColorStyles"
 import ProjectCard from "../cards/ProjectCard"
-import { Link } from "gatsby"
+import ProjectModal from "../cards/ProjectModal"
 import { publicAxios } from "../../services/axios.service"
+
 const ProjectSection = () => {
   const [project, setProject] = useState([])
+  const [openModal, setOpenModal] = useState(false)
+  const [selectedData, setSelectedData] = useState({})
+
+  const onCloseModal = () => {
+    setOpenModal(false)
+  }
+
+  const onSelectData = selectedRec => {
+    setSelectedData(selectedRec)
+    setOpenModal(true)
+  }
 
   useEffect(() => {
     let isMounted = false
@@ -24,14 +37,24 @@ const ProjectSection = () => {
       isMounted = true
     }
   }, [])
+
   return (
     <Wrapper id="project">
       <ContentWrapper>
         <PreTitle src="/images/backgrounds/pre-title.svg" />
         <Title>Karya Kami</Title>
         <ProjectWrapper>
+          <ProjectModal
+            isOpen={openModal}
+            setOnClose={onCloseModal}
+            data={selectedData}
+          />
           {project.map(item => (
-            <ProjectCard key={item._id} item={item} />
+            <ProjectCard
+              key={item._id}
+              item={item}
+              onClick={() => onSelectData(item)}
+            />
           ))}
         </ProjectWrapper>
         <ButtonWrapper>

@@ -2,9 +2,9 @@ import React from "react"
 import styled from "styled-components"
 import { FiExternalLink } from "react-icons/fi"
 
-const ProjectCard = ({ item }) => {
+const ProjectCard = ({ item, onClick }) => {
   return (
-    <Wrapper>
+    <Wrapper onClick={onClick}>
       <Image src={item.thumbnail} />
       <LinkWrapper>
         <Link>{item.title}</Link>

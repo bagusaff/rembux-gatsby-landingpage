@@ -38,6 +38,7 @@ const ReviewSection = () => {
         <ReviewWrapper>
           <Quote src="/images/icons/quote.svg" />
           <SwiperContainer
+            showThumbs={false}
             autoPlay={true}
             infiniteLoop={true}
             showStatus={false}

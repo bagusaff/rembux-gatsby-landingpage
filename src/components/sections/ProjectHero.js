@@ -14,6 +14,7 @@ const ProjectHero = () => {
       <ProjectHeroBackground />
       <ContentWrapper>
         <SwiperWrapper
+          showThumbs={false}
           renderArrowPrev={(onClickHandler, hasPrev, label) =>
             hasPrev && (
               <ArrowButton

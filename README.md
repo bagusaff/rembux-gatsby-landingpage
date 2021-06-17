@@ -97,3 +97,7 @@ Open [http://localhost:8000](http://localhost:8000) with your browser to see the
 ## 16 / 06 / 2021
 
 - connected to API , all data comes from the server
+
+## 17 / 06 / 2021
+
+- Added Modal on project card click to display the details of each project
