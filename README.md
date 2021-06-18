@@ -101,3 +101,7 @@ Open [http://localhost:8000](http://localhost:8000) with your browser to see the
 ## 17 / 06 / 2021
 
 - Added Modal on project card click to display the details of each project
+
+## 18 / 06 / 2021
+
+- Made message form fully usable using emailjs

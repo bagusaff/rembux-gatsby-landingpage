@@ -1,16 +1,73 @@
-import React from "react"
+import React, { useState } from "react"
 import styled from "styled-components"
+import emailjs from "emailjs-com"
+import Spinner from "../misc/Spinner"
+import { ToastContainer, toast } from "react-toastify"
+import "react-toastify/dist/ReactToastify.css"
+
 const ContactForm = () => {
+  const [loading, setLoading] = useState(false)
+
+  const serviceId = process.env.GATSBY_EMAIL_SERVICE_ID
+  const templateId = process.env.GATSBY_EMAIL_TEMPLATE_ID
+  const userId = process.env.GATSBY_EMAIL_USER_ID
+  const sendEmail = e => {
+    e.preventDefault()
+    setLoading(true)
+    emailjs
+      .sendForm(serviceId, templateId, e.target, userId)
+      .then(res => {
+        setLoading(false)
+        notifySuccess()
+      })
+      .catch(err => {
+        setLoading(false)
+        notifyError()
+      })
+  }
+
+  const notifySuccess = () =>
+    toast.success(
+      "Pesan Berhasil Dikirim, kami akan menghubungi anda segera! 😊",
+      {
+        position: "bottom-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        style: {
+          background: " #fc5c7e",
+          color: "#ffffff",
+        },
+      }
+    )
+  const notifyError = () =>
+    toast.error("Terjadi suatu kesalahan,silahkan coba lagi ! 😞", {
+      position: "bottom-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    })
   return (
     <FormWrapper>
-      <form>
+      <ToastContainer />
+      <form onSubmit={sendEmail}>
         <FormLabel>Nama</FormLabel>
         <TextInput type="text" name="name" placeholder="Masukan Nama Anda" />
         <FormLabel>Email</FormLabel>
         <TextInput type="email" name="email" placeholder="Masukan Email Anda" />
         <FormLabel>Pesan</FormLabel>
-        <TextAreaInput placeholder="Masukan Pesan Anda" />
-        <ButtonSubmit type="submit" value="Submit Request" />
+        <TextAreaInput name="message" placeholder="Masukan Pesan Anda" />
+        {!loading ? (
+          <ButtonSubmit type="submit" value="Kirim Pesan!" />
+        ) : (
+          <Spinner />
+        )}
       </form>
     </FormWrapper>
   )
