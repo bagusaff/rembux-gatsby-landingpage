@@ -22,7 +22,7 @@ const StyledSpinner = styled.svg`
   margin: auto;
   align-self: center;
   & .path {
-    stroke: #5652bf;
+    stroke: #fc5c7e;
     stroke-linecap: round;
     animation: dash 1.5s ease-in-out infinite;
   }
