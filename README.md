@@ -105,3 +105,9 @@ Open [http://localhost:8000](http://localhost:8000) with your browser to see the
 ## 18 / 06 / 2021
 
 - Made message form fully usable using emailjs
+
+## 21 / 06 / 2021
+
+- Add simple form validation on send message
+
+- add spinner when loading data

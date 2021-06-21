@@ -7,11 +7,13 @@ import { themes } from "../styles/ColorStyles"
 import ProjectCard from "../cards/ProjectCard"
 import ProjectModal from "../cards/ProjectModal"
 import { publicAxios } from "../../services/axios.service"
+import Spinner from "../misc/Spinner"
 
 const ProjectSection = () => {
   const [project, setProject] = useState([])
   const [openModal, setOpenModal] = useState(false)
   const [selectedData, setSelectedData] = useState({})
+  const [loading, setLoading] = useState(false)
 
   const onCloseModal = () => {
     setOpenModal(false)
@@ -25,10 +27,12 @@ const ProjectSection = () => {
   useEffect(() => {
     let isMounted = false
     const FetchEightProject = () => {
+      setLoading(true)
       publicAxios
         .get("/api/project/display")
         .then(res => {
           setProject(res.data)
+          setLoading(false)
         })
         .catch(err => console.log(err))
     }
@@ -43,6 +47,7 @@ const ProjectSection = () => {
       <ContentWrapper>
         <PreTitle src="/images/backgrounds/pre-title.svg" />
         <Title>Karya Kami</Title>
+        {loading && <Spinner />}
         <ProjectWrapper>
           <ProjectModal
             isOpen={openModal}

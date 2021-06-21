@@ -7,23 +7,42 @@ import "react-toastify/dist/ReactToastify.css"
 
 const ContactForm = () => {
   const [loading, setLoading] = useState(false)
+  const [state, setState] = useState({
+    name: "",
+    email: "",
+    message: "",
+  })
 
   const serviceId = process.env.GATSBY_EMAIL_SERVICE_ID
   const templateId = process.env.GATSBY_EMAIL_TEMPLATE_ID
   const userId = process.env.GATSBY_EMAIL_USER_ID
+
+  const handleChange = e => {
+    const name = e.target.name
+    const value = e.target.value
+    setState({
+      ...state,
+      [name]: value,
+    })
+  }
   const sendEmail = e => {
     e.preventDefault()
     setLoading(true)
-    emailjs
-      .sendForm(serviceId, templateId, e.target, userId)
-      .then(res => {
-        setLoading(false)
-        notifySuccess()
-      })
-      .catch(err => {
-        setLoading(false)
-        notifyError()
-      })
+    if (state.name !== "" && state.email !== "" && state.message !== "") {
+      emailjs
+        .sendForm(serviceId, templateId, e.target, userId)
+        .then(res => {
+          setLoading(false)
+          notifySuccess()
+        })
+        .catch(err => {
+          setLoading(false)
+          notifyError()
+        })
+    } else {
+      notifyEmpty()
+      setLoading(false)
+    }
   }
 
   const notifySuccess = () =>
@@ -53,16 +72,45 @@ const ContactForm = () => {
       draggable: true,
       progress: undefined,
     })
+
+  const notifyEmpty = () =>
+    toast.error("Semua form harus diisi ! ", {
+      position: "bottom-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    })
+
   return (
     <FormWrapper>
       <ToastContainer />
       <form onSubmit={sendEmail}>
         <FormLabel>Nama</FormLabel>
-        <TextInput type="text" name="name" placeholder="Masukan Nama Anda" />
+        <TextInput
+          type="text"
+          name="name"
+          placeholder="Masukan Nama Anda"
+          value={state.name}
+          onChange={handleChange}
+        />
         <FormLabel>Email</FormLabel>
-        <TextInput type="email" name="email" placeholder="Masukan Email Anda" />
+        <TextInput
+          type="email"
+          name="email"
+          placeholder="Masukan Email Anda"
+          value={state.email}
+          onChange={handleChange}
+        />
         <FormLabel>Pesan</FormLabel>
-        <TextAreaInput name="message" placeholder="Masukan Pesan Anda" />
+        <TextAreaInput
+          name="message"
+          placeholder="Masukan Pesan Anda"
+          value={state.message}
+          onChange={handleChange}
+        />
         {!loading ? (
           <ButtonSubmit type="submit" value="Kirim Pesan!" />
         ) : (

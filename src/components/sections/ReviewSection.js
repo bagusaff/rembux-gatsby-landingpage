@@ -8,19 +8,23 @@ import { H2 } from "../styles/TextStyles"
 import { themes } from "../styles/ColorStyles"
 import ReviewBackground from "../backgrounds/ReviewBackground"
 import ReviewCard from "../cards/ReviewCard"
+import Spinner from "../misc/Spinner"
 
 import { publicAxios } from "../../services/axios.service"
 
 const ReviewSection = () => {
   const [review, setReview] = useState([])
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
     let isMounted = false
     const FetchReview = () => {
+      setLoading(true)
       publicAxios
         .get("/api/review/")
         .then(res => {
           setReview(res.data)
+          setLoading(false)
         })
         .catch(err => console.log(err))
     }
@@ -37,6 +41,7 @@ const ReviewSection = () => {
         <Title>Apa Kata Mereka ?</Title>
         <ReviewWrapper>
           <Quote src="/images/icons/quote.svg" />
+          {loading && <Spinner />}
           <SwiperContainer
             showThumbs={false}
             autoPlay={true}
