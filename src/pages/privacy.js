@@ -4,8 +4,14 @@ import Layout from '../components/layout/layout';
 const Privacy = () => {
   return (
     <Layout>
-        <div style={styles.Wrapper}>
-        <h1 style={styles.HeaderText}> Privacy Policy</h1>
+        <div style={{flex: 1,
+        justifyContent:'center',
+        alignItems:'center',
+        maxWidth: 800,
+        marginTop:40}}>
+        <h1 style={{   fontSize:24,
+        textAlign:'center',
+        marginBottom:16}}> Privacy Policy</h1>
         <textarea>
         Rembux Developer Privacy Policy
 
@@ -85,18 +91,3 @@ const Privacy = () => {
 };
 
 export default Privacy;
-
-const styles = StyleSheet.create({
-    Wrapper:{
-        flex: 1,
-        justifyContent:'center',
-        alignItems:'center',
-        maxWidth: 800,
-        marginTop:40
-    },
-    HeaderText:{
-        fontSize:24,
-        textAlign:'center',
-        marginBottom:16
-    }
-});
