@@ -12,6 +12,7 @@ import {
   FaInstagram,
   FaGooglePlusG,
 } from "react-icons/fa"
+import { Link } from "gatsby"
 
 const ContactSection = () => {
   return (
@@ -38,7 +39,7 @@ const ContactSection = () => {
             <FaGooglePlusG />
           </Icon>
         </IconWrapper>
-        <Footer>2021 © rembux.dev - All Right Reserved.</Footer>
+        <Footer>2022 © rembux.dev - All Right Reserved. <Link to="/privacy">Privacy Policy</Link></Footer>
       </ContentWrapper>
     </Wrapper>
   )
